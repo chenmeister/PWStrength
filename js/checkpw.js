@@ -1,14 +1,25 @@
 function getPassword() {
     var text = document.getElementById('password').value;
-    console.log("Eight Char: "+checkIfEightChar(text));
-    console.log("One Lowercase Char: "+checkIfOneLowercase(text));
-    console.log("One Uppercase Char: "+checkIfOneUppercase(text));
-    console.log("One Digit Char: "+checKIfOneDigit(text));
 
     var length = document.getElementById('length');
+    var lowercase = document.getElementById('lowercase');
+    var uppercase = document.getElementById('uppercase');
+    var number = document.getElementById('number');
+    var special = document.getElementById('special');
 
-    checkIfEightChar(text) ? length.classList.remove('not-met') : length.classList.add('not-met');
-
+    if(text.length === 0){
+        length.classList.remove('not-met');
+        lowercase.classList.remove('not-met');
+        uppercase.classList.remove('not-met');
+        number.classList.remove('not-met');
+        special.classList.remove('not-met');
+    } else {
+        checkIfEightChar(text) ? length.classList.remove('not-met') : length.classList.add('not-met');
+        checkIfOneLowercase(text) ? lowercase.classList.remove('not-met') : lowercase.classList.add('not-met');
+        checkIfOneUppercase(text) ? uppercase.classList.remove('not-met') : uppercase.classList.add('not-met');
+        checkIfOneDigit(text) ? number.classList.remove('not-met') : number.classList.add('not-met');
+        checkIfOneSpecialChar(text) ? special.classList.remove('not-met') : special.classList.add('not-met');
+    }
 
 }
 
@@ -17,18 +28,25 @@ function checkIfEightChar(text){
 }
 
 function checkIfOneLowercase(text) {
-    return text.match(/[a-z]/);
+    return /[a-z]/.test(text);
 }
 
 function checkIfOneUppercase(text) {
-    return text.match(/[A-Z]/);
+    return /[A-Z]/.test(text);
 }
 
-function checKIfOneDigit(text) {
-    return text.match(/[0-9]/);
+function checkIfOneDigit(text) {
+    return /[0-9]/.test(text);
+}
+
+function checkIfOneSpecialChar(text) {
+    return /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(text);
 }
 
 function togglePassword() {
     var passInput = document.getElementById('password');
-    passInput.type === "password" ? passInput.type = 'text' : passInput.type = 'password';
+    var togglePW = document.getElementById('togglePW');
+
+    passInput.type === "password" ? passInput.type = "text" : passInput.type = "password";
+    togglePW.textContent === "Show Password" ? togglePW.textContent = "Hide Password" : togglePW.textContent = "Show Password";
 }

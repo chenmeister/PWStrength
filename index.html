@@ -9,14 +9,14 @@
     <h1>Password Strength Checker</h1>
     <label>Enter your password:</label><br/>
     <input type="password" id="password" name="passwordType" onkeyup="getPassword()"/>
-    <button onclick="togglePassword();">Show Password</button>
+    <button id="togglePW" onclick="togglePassword();">Show Password</button>
     <p>Password has:</p>
-    <ul>
+    <ul id="requirements">
       <li id="length">At least 8 characters</li>
-      <li class="lowercase">At least 1 lowercase letter</li>
-      <li class="uppercase">At least 1 uppercase letter</li>
-      <li class="number">At least 1 numerical number</li>
-      <li class="special">At least 1 special character</li>
+      <li id="lowercase">At least 1 lowercase letter</li>
+      <li id="uppercase">At least 1 uppercase letter</li>
+      <li id="number">At least 1 numerical number</li>
+      <li id="special">At least 1 special character</li>
     </ul>
     <script type="text/javascript" src="js/checkpw.js"></script>
   </body>
