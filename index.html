@@ -3,21 +3,46 @@
   <head>
     <meta charset="UTF-8">
     <title>Password Strength Checker</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
   </head>
   <body>
-    <h1>Password Strength Checker</h1>
-    <label>Enter your password:</label><br/>
-    <input type="password" id="password" name="passwordType" onkeyup="getPassword()"/>
-    <button id="togglePW" onclick="togglePassword();">Show Password</button>
-    <p>Password has:</p>
-    <ul id="requirements">
-      <li id="length">At least 8 characters</li>
-      <li id="lowercase">At least 1 lowercase letter</li>
-      <li id="uppercase">At least 1 uppercase letter</li>
-      <li id="number">At least 1 numerical number</li>
-      <li id="special">At least 1 special character</li>
-    </ul>
+    <div class="container">
+      <h1 class="display-3 text-center">Password Strength Checker</h1>
+
+      <div class="input-group">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          name="passwordType"
+          aria-label="Enter a password:"
+          onkeyup="getPassword()"/>
+        <span class="input-group-btn">
+          <button
+            id="togglePW"
+            class="btn btn-secondary"
+            type="button"
+            style="cursor:pointer;"
+            onclick="togglePassword();">Show Password</button>
+        </span>
+
+      </div>
+
+      <br/>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Password has:</h1>
+          <ul class="lead list-group" id="requirements">
+            <li id="length" class="list-group-item">At least 8 characters</li>
+            <li id="lowercase" class="list-group-item">At least 1 lowercase letter</li>
+            <li id="uppercase" class="list-group-item">At least 1 uppercase letter</li>
+            <li id="number" class="list-group-item">At least 1 numerical number</li>
+            <li id="special" class="list-group-item">At least 1 special character</li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <script type="text/javascript" src="js/checkpw.js"></script>
   </body>
 </html>

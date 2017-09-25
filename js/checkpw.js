@@ -7,20 +7,11 @@ function getPassword() {
     var number = document.getElementById('number');
     var special = document.getElementById('special');
 
-    if(text.length === 0){
-        length.classList.remove('not-met');
-        lowercase.classList.remove('not-met');
-        uppercase.classList.remove('not-met');
-        number.classList.remove('not-met');
-        special.classList.remove('not-met');
-    } else {
-        checkIfEightChar(text) ? length.classList.remove('not-met') : length.classList.add('not-met');
-        checkIfOneLowercase(text) ? lowercase.classList.remove('not-met') : lowercase.classList.add('not-met');
-        checkIfOneUppercase(text) ? uppercase.classList.remove('not-met') : uppercase.classList.add('not-met');
-        checkIfOneDigit(text) ? number.classList.remove('not-met') : number.classList.add('not-met');
-        checkIfOneSpecialChar(text) ? special.classList.remove('not-met') : special.classList.add('not-met');
-    }
-
+    checkIfEightChar(text) ? length.classList.add('list-group-item-success') : length.classList.remove('list-group-item-success');
+    checkIfOneLowercase(text) ? lowercase.classList.add('list-group-item-success') : lowercase.classList.remove('list-group-item-success');
+    checkIfOneUppercase(text) ? uppercase.classList.add('list-group-item-success') : uppercase.classList.remove('list-group-item-success');
+    checkIfOneDigit(text) ? number.classList.add('list-group-item-success') : number.classList.remove('list-group-item-success');
+    checkIfOneSpecialChar(text) ? special.classList.add('list-group-item-success') : special.classList.remove('list-group-item-success');
 }
 
 function checkIfEightChar(text){
