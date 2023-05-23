@@ -2,6 +2,7 @@
   "name": "pwstrength",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "test": "echo \"Error: no test specified\" && exit 1"
