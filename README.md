@@ -1,1 +1,3 @@
 # PWStrength
+
+First started back in 2017. Never really had the time to look back at it. Once I leared about vite, it sparked my interest in resurrecting this project back from the dead. Will be adding new features. Stay tuned...
