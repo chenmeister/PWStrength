@@ -20,7 +20,7 @@ function getPassword() {
   var number = document.getElementById('number');
   var special = document.getElementById('special');
 
-  checkIfEightChar(text)
+  checkIfTwelveChar(text)
     ? length?.classList.add('list-group-item-success')
     : length?.classList.remove('list-group-item-success');
   checkIfOneLowercase(text)
@@ -37,8 +37,8 @@ function getPassword() {
     : special?.classList.remove('list-group-item-success');
 }
 
-function checkIfEightChar(text) {
-  return text?.length >= 8;
+function checkIfTwelveChar(text) {
+  return text?.length >= 12;
 }
 
 function checkIfOneLowercase(text) {
