@@ -1,79 +1,58 @@
+import { ChangeEvent, useState } from 'react';
 import './App.css'
 
 function App() {
 
-  // function togglePassword() {
-  //   var passInput = document.getElementById('password');
-  //   var togglePW = document.getElementById('togglePW');
-  //   var buttonText = togglePW?.textContent.trim();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  }
   
-  //   passInput && passInput?.type === 'password'
-  //     ? (passInput.type = 'text')
-  //     : (passInput.type = 'password');
-  //   togglePW && buttonText === 'Show Password'
-  //     ? (togglePW.textContent = 'Hide Password')
-  //     : (togglePW.textContent = 'Show Password');
-  // }
+  const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
+    let password = e.target.value;
+    checkIfTwelveChar(password);
+    checkIfOneLowercase(password);
+    checkIfOneUppercase(password);
+    checkIfOneDigit(password);
+    checkIfOneSpecialChar(password);
+  }
   
-  // function getPassword() {
-  //   var text = document.getElementById('password')?.value;
+  const checkIfTwelveChar = (text: string) => {
+    return text?.length >= 12;
+  }
   
-  //   var length = document.getElementById('length');
-  //   var lowercase = document.getElementById('lowercase');
-  //   var uppercase = document.getElementById('uppercase');
-  //   var number = document.getElementById('number');
-  //   var special = document.getElementById('special');
+  const checkIfOneLowercase = (text: string) => {
+    return /[a-z]/.test(text);
+  }
   
-  //   checkIfTwelveChar(text)
-  //     ? length?.classList.add('list-group-item-success')
-  //     : length?.classList.remove('list-group-item-success');
-  //   checkIfOneLowercase(text)
-  //     ? lowercase?.classList.add('list-group-item-success')
-  //     : lowercase?.classList.remove('list-group-item-success');
-  //   checkIfOneUppercase(text)
-  //     ? uppercase?.classList.add('list-group-item-success')
-  //     : uppercase?.classList.remove('list-group-item-success');
-  //   checkIfOneDigit(text)
-  //     ? number?.classList.add('list-group-item-success')
-  //     : number?.classList.remove('list-group-item-success');
-  //   checkIfOneSpecialChar(text)
-  //     ? special?.classList.add('list-group-item-success')
-  //     : special?.classList.remove('list-group-item-success');
-  // }
+  const checkIfOneUppercase = (text: string) =>  {
+    return /[A-Z]/.test(text);
+  }
   
-  // function checkIfTwelveChar(text) {
-  //   return text?.length >= 12;
-  // }
+  const checkIfOneDigit = (text: string) =>  {
+    return /[0-9]/.test(text);
+  }
   
-  // function checkIfOneLowercase(text) {
-  //   return /[a-z]/.test(text);
-  // }
-  
-  // function checkIfOneUppercase(text) {
-  //   return /[A-Z]/.test(text);
-  // }
-  
-  // function checkIfOneDigit(text) {
-  //   return /[0-9]/.test(text);
-  // }
-  
-  // function checkIfOneSpecialChar(text) {
-  //   return /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(text);
-  // }
+  const checkIfOneSpecialChar = (text: string) =>  {
+    return /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(text);
+  }
 
   return (
     <>
       <h1>Password Strength Checker</h1>
       <input
-          type="password"
+          type={!showPassword ? "password" : "text"}
           id="password"
           name="passwordType"
           aria-label="Enter a password:"
+          onChange={handlePassword}
         />
         <span>
           <button
             id="togglePW"
             type="button"
+            onClick={togglePassword}
           >
             Show Password
           </button>
@@ -95,6 +74,7 @@ function App() {
             At least 1 special character
           </li>
         </ul>
+        <h1>Hackability</h1>
     </>
   )
 }
